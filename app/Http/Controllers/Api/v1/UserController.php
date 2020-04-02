@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\User;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     /**
      * Store a newly created resource in storage.

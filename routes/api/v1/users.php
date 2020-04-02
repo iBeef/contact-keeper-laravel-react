@@ -14,4 +14,4 @@ use Illuminate\Http\Request;
  * @route POST api/v1/users
  * @access public
  */
-Route::post('/', 'UsersController@store');
+Route::post('/', 'UserController@store');
