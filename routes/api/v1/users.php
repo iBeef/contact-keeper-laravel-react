@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Transactions API Routes
@@ -12,6 +14,4 @@
  * @route POST api/v1/users
  * @access public
  */
-Route::post('/', function() {
-    return "Registers a user.";
-});
+Route::post('/', 'UsersController@store');
