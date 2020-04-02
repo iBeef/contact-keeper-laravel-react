@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')
+     ->group(base_path('routes/api/v1/apiV1.php'));
+
+Route::fallback(function() {
+    return response()->json([
+        'success' => false,
+        'error' => "Page not found: If this problem persists, please contact an administrator."
+    ]);
 });
