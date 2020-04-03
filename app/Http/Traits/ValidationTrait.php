@@ -15,7 +15,7 @@ trait ValidationTrait
      * @param  assoc  $input
      * @return \Illuminate\Http\Response|\Illuminate\Support\Facades\Validator
      */
-    public function apiValidator($input, $rules, $customMessages=null)
+    public function apiValidator($input, $rules, $customMessages = [])
     {
         $apiValidator = Validator::make(
             $input,
