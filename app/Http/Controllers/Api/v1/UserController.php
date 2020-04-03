@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Http\Traits\ValidationTrait;
+// use App\User;
 
 class UserController extends Controller
 {
+
+    use ValidationTrait;
+
     /**
      * Store a newly created resource in storage.
      *
@@ -28,26 +31,16 @@ class UserController extends Controller
             'email.*' => "Please include a valid email",
             'password.*' => "Please enter a password with 6 or more characters."
         ];
-        $validator = Validator::make(
+        $validator = $this->apiValidator(
             $request->all(),
-            $rules, $customMessages
+            $rules,
+            $customMessages
         );
-        if(!$validator->fails()) {
-            // $validated = $validator->validated();
-            // $user = new User;
-            // $user->name = $validated['name'];
-            // $user->email = $validated['email'];
-            // $user->password = $validated['password'];
-            // $user->save();
-            return response()
-                ->json([
-                    'success' => true
-                ], 201);
-        } else {
-            return response()
+
+        return response()
             ->json([
-                'errors' => $validator->errors()
-            ], 400);
-        }
+                'success' => true,
+                'message' => "Validation passed"
+            ], 201);
     }
 }

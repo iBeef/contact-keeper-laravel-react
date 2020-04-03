@@ -5,6 +5,9 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use \App\Exceptions\RedirectException;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -50,6 +53,23 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        // Api's return JSON
+        if($exception instanceof RedirectException) {
+            return $exception->getResponse();
+        } else if($request->is('api/*')) {
+            if($exception instanceof ModelNotFoundException) {
+                return response()->json([
+                    'success' => false,
+                    'error' => "Resource not available"
+                ], 400);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'error' => $exception->getMessage()
+                ], 500);
+            }
+        }
+        // If not api return as normal.
         return parent::render($request, $exception);
     }
 }
