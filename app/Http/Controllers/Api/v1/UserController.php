@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\ValidationTrait;
-// use App\User;
+use App\User;
 
 class UserController extends Controller
 {
@@ -36,6 +36,15 @@ class UserController extends Controller
             $rules,
             $customMessages
         );
+        $validated = $validator->validated();
+
+        if(User::where('email', $validated['email'])->first()) {
+            return 'exists';
+        } else {
+            User::create($validator->validated());
+            return "doesn't exist";
+        }
+        // User::create($validator->validated());
 
         return response()
             ->json([
