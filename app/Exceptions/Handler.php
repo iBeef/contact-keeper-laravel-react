@@ -6,7 +6,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use \App\Exceptions\RedirectException;
+use App\Exceptions\RedirectException;
 
 class Handler extends ExceptionHandler
 {

@@ -3,15 +3,15 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use \Illuminate\Contracts\Validation\Validator;
+use Illuminate\Contracts\Validation\Validator;
 use App\Exceptions\RedirectException;
 
-class RegisterUser extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     * Anyone is authorised to use this route.
-     *
+     * Anyone can access this route
+     * 
      * @return bool
      */
     public function authorize()
@@ -27,7 +27,6 @@ class RegisterUser extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
             'email' => 'required|email',
             'password' => 'required|min:6'
         ];
@@ -42,11 +41,15 @@ class RegisterUser extends FormRequest
     {
         return [
             'name.*' => "Please add a name",
-            'email.*' => "Please include a valid email",
-            'password.*' => "Please enter a password with 6 or more characters."
+            'email.*' => "Please include a valid email"
         ];
     }
 
+    /**
+     * Handle a failed validation attempt
+     * 
+     * @param Validator $validator
+     */
     protected function failedValidation(Validator $validator)
     {
         $response = response()

@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Traits\ValidationTrait;
 use App\User;
-use App\Http\Requests\RegisterUser;
+use App\Http\Requests\RegisterUserRequest;
 use JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
 
 class UserController extends Controller
 {
@@ -21,7 +19,7 @@ class UserController extends Controller
      * @param  App\Http\Requests\RegisterUser  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterUser $request)
+    public function store(RegisterUserRequest $request)
     {
         $validated = $request->validated();
         if(User::where('email', $validated['email'])->first()) {

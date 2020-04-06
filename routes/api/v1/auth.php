@@ -22,6 +22,4 @@ Route::get('/', function() {
  * @route POST api/v1/auth
  * @access public
  */
-Route::post('/', function() {
-    return "Log in user";
-});
+Route::post('/', 'AuthController@login');
