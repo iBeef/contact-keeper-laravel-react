@@ -13,7 +13,7 @@ class UserController extends Controller
     use ValidationTrait;
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created user in the DB.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -39,17 +39,17 @@ class UserController extends Controller
         $validated = $validator->validated();
 
         if(User::where('email', $validated['email'])->first()) {
-            return 'exists';
+            return response()
+                ->json([
+                        'msg' => "User already exists"
+                ], 400);
         } else {
             User::create($validator->validated());
-            return "doesn't exist";
+            return response()
+                ->json([
+                    'success' => true,
+                    'message' => "User created"
+                ], 201);
         }
-        // User::create($validator->validated());
-
-        return response()
-            ->json([
-                'success' => true,
-                'message' => "Validation passed"
-            ], 201);
     }
 }
