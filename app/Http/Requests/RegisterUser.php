@@ -10,6 +10,7 @@ class RegisterUser extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     * Anyone is authorised to use this route.
      *
      * @return bool
      */
