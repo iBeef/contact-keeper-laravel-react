@@ -16,7 +16,7 @@ class UserController extends Controller
     /**
      * Store a newly created user in the DB.
      *
-     * @param  App\Http\Requests\RegisterUser  $request
+     * @param  \App\Http\Requests\RegisterUserRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(RegisterUserRequest $request)

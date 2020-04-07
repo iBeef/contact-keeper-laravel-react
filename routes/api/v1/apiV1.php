@@ -12,6 +12,7 @@ Route::prefix('auth')
 
 Route::prefix('contacts')
     ->namespace('Api\v1')
+    ->middleware('jwt.verify')
     ->group(base_path('routes/api/v1/contacts.php'));
 
 Route::prefix('users')

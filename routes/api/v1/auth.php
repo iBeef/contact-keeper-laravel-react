@@ -12,9 +12,7 @@
  * @route POST api/v1/auth
  * @access private
  */
-Route::get('/', function() {
-    return "Get logged in user";
-});
+Route::middleware('jwt.verify')->get('/', 'AuthController@show');
 
 /**
  * Auth user and get token
