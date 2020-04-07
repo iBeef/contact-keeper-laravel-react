@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\ContactResource;
+use App\Http\Resources\ContactsCollection;
+use App\Contact;
+use App\User;
 
 class ContactController extends Controller
 {
@@ -15,7 +18,7 @@ class ContactController extends Controller
      */
     public function index(Request $request)
     {
-        // return $request->user->id;
+        return new ContactsCollection($request->user->contacts);
     }
 
     /**
