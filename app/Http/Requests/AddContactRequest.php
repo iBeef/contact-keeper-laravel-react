@@ -6,6 +6,9 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use App\Exceptions\RedirectException;
 
+use Illuminate\Http\Request;
+
+// class AddContactRequest extends MiddlewareFormRequest
 class AddContactRequest extends FormRequest
 {
     /**

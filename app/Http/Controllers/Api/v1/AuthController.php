@@ -30,7 +30,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Logs in the user
+     * Gets the users details
      * 
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response

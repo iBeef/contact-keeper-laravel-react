@@ -24,14 +24,17 @@ class ContactController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Request and FormRequest have to be called to access variable set by
+     * middleware.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\AddContactRequest  $formRequest
      * @return \Illuminate\Http\Response
      */
-    public function store(AddContactRequest $request)
-    {
-        var_dump($request->user);
-        // $user->contacts->create($request->validated());
+    public function store(Request $request, AddContactRequest $formRequest)
+    {   
+        $user = $request->user;
+        var_dump($user->contacts);
     }
 
     /**
