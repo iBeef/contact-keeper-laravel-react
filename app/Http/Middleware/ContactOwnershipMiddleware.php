@@ -4,6 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 
+use App\Contact;
+use App\Exceptions\RedirectException;
+
 class ContactOwnershipMiddleware
 {
     /**
@@ -15,10 +18,12 @@ class ContactOwnershipMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $contacts = 
-        $request->user->contacts()->where('id', $request->route('id'))->first());
-        // var_dump($request->route('id'));
-        die();
-        // return $next($request);
+        $contact = Contact::where('id', $request->route('id'))->first();
+        if($contact and $contact->user_id !== $request->user->id) {
+            $response = response()
+                ->json(['msg' => "Not authorised"], 401);
+            throw (new RedirectException)->setResponse($response);
+        }
+        return $next($request);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddContactRequest;
+use App\Http\Requests\UpdateContactRequest;
 use App\Http\Resources\ContactResource;
 use App\Http\Resources\ContactsCollection;
 use App\Contact;
@@ -34,8 +35,6 @@ class ContactController extends Controller
     public function store(Request $request, AddContactRequest $formRequest)
     {   
         $user = $request->user;
-        // var_dump($formRequest->validated());
-        // die();
         $contact = $user->contacts()
             ->create($formRequest->validated());
         return new ContactResource($contact);
@@ -59,9 +58,12 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, UpdateContactRequest $formRequest, $id)
     {
-        return 'put';
+        var_dump($id);
+        var_dump($formRequest->validated());
+        var_dump($request->contact);
+
     }
 
     /**
