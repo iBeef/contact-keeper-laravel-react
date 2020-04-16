@@ -15,8 +15,9 @@ class ContactOwnershipMiddleware
      */
     public function handle($request, Closure $next)
     {
-        // var_dump($request->all());
-        // die();
-        return $next($request);
+        var_dump($request->user->contacts()->where('user_id', $request->route('id')));
+        // var_dump($request->route('id'));
+        die();
+        // return $next($request);
     }
 }
