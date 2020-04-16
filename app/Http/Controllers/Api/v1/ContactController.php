@@ -34,7 +34,11 @@ class ContactController extends Controller
     public function store(Request $request, AddContactRequest $formRequest)
     {   
         $user = $request->user;
-        var_dump($user->contacts);
+        // var_dump($formRequest->validated());
+        // die();
+        $contact = $user->contacts()
+            ->create($formRequest->validated());
+        return new ContactResource($contact);
     }
 
     /**

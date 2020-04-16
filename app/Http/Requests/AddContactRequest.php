@@ -30,6 +30,9 @@ class AddContactRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'email' => 'email',
+            'phone' => '',
+            'type' => 'nullable'
         ];
     }
 

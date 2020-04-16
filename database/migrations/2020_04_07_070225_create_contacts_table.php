@@ -21,6 +21,7 @@ class CreateContactsTable extends Migration
             $table->string('type')->default('personal');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 

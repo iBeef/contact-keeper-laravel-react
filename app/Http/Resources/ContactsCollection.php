@@ -4,6 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
+use App\Http\Resources\ContactResource;
+
 class ContactsCollection extends ResourceCollection
 {
     /**
@@ -14,6 +16,6 @@ class ContactsCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return ContactResource::collection($this->collection);
     }
 }
