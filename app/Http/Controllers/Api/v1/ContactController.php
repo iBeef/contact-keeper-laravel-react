@@ -59,10 +59,11 @@ class ContactController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, UpdateContactRequest $formRequest, $id)
+    // public function update(UpdateContactRequest $request, $id)
     {
-        var_dump($id);
+        // var_dump($request->all());
         var_dump($formRequest->validated());
-        var_dump($request->contact);
+        // var_dump($request->user);
 
     }
 

@@ -47903,7 +47903,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById('root'));
+react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("root"));
 
 /***/ }),
 
@@ -47925,8 +47925,8 @@ react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/ibeef/Programming/Web_Dev/PHP_Sites/laravel-react-base/resources/js/index.js */"./resources/js/index.js");
-module.exports = __webpack_require__(/*! /Users/ibeef/Programming/Web_Dev/PHP_Sites/laravel-react-base/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/ibeef/Programming/Web_Dev/PHP_Sites/contact-keeper-laravel-react/resources/js/index.js */"./resources/js/index.js");
+module.exports = __webpack_require__(/*! /Users/ibeef/Programming/Web_Dev/PHP_Sites/contact-keeper-laravel-react/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

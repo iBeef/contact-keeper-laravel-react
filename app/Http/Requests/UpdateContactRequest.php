@@ -29,8 +29,8 @@ class UpdateContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'nullable',
-            'email' => 'email|nullable',
+            'name' => 'required',
+            'email' => 'email',
             'phone' => 'nullable',
             'type' => 'nullable'
         ];
@@ -45,9 +45,8 @@ class UpdateContactRequest extends FormRequest
     {
         return [
             'name.*' => "Please add a name",
-            'email.*' => "Please add a valid email",
-            'phone.*' => "Please add a valid phone number",
-            'name.*' => "Please add a name",
+            'email.*' => "Please use a valid email",
+            'phone.*' => "Please use a valid phone number",
         ];
     }
 
