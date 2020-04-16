@@ -16,5 +16,12 @@
  * @access private
  */
 Route::resource('/', 'ContactController', [
-    'except' => ['edit', 'create']
+    'except' => ['show', 'edit', 'create', 'update', 'destroy']
 ]);
+
+Route::resource('/', 'ContactController',
+    [
+        'parameters' => ['' => 'id'],
+        'only' => ['update', 'destroy']
+    ],
+)->middleware('ownership.contact');

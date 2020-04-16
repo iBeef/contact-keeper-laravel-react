@@ -61,7 +61,7 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return 'put';
     }
 
     /**
