@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>{{ config('app.name') }}</title>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/20c13ea301.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="root"></div>

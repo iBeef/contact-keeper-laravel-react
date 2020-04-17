@@ -29,8 +29,8 @@ class UpdateContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'email',
+            'name' => 'nullable',
+            'email' => 'email|nullable',
             'phone' => 'nullable',
             'type' => 'nullable'
         ];

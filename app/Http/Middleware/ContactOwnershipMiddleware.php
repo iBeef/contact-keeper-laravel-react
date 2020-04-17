@@ -23,6 +23,10 @@ class ContactOwnershipMiddleware
             $response = response()
                 ->json(['msg' => "Not authorised"], 401);
             throw (new RedirectException)->setResponse($response);
+        } else if(!$contact) {
+            $response = response()
+                ->json(['msg' => "Contact not found"], 404);
+            throw (new RedirectException)->setResponse($response);
         }
         return $next($request);
     }

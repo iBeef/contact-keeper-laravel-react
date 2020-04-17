@@ -8,11 +8,21 @@ use App\Http\Requests\AddContactRequest;
 use App\Http\Requests\UpdateContactRequest;
 use App\Http\Resources\ContactResource;
 use App\Http\Resources\ContactsCollection;
+use App\Services\UpdateContactService;
 use App\Contact;
-use App\User;
+// use App\User;
 
 class ContactController extends Controller
 {
+    /**
+     * Apply middleware to 'update' and 'destroy' methods.
+     */
+    public function __construct()
+    {
+        $this->middleware('ownership.contact', ['only' => ['update', 'destroy']]);
+        $this->updateContactService = new UpdateContactService();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,11 +42,10 @@ class ContactController extends Controller
      * @param  \App\Http\Requests\AddContactRequest  $formRequest
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, AddContactRequest $formRequest)
+    public function store(AddContactRequest $request)
     {   
-        $user = $request->user;
-        $contact = $user->contacts()
-            ->create($formRequest->validated());
+        $contact = $request->user->contacts()
+            ->create($request->validated());
         return new ContactResource($contact);
     }
 
@@ -58,13 +67,11 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UpdateContactRequest $formRequest, $id)
-    // public function update(UpdateContactRequest $request, $id)
+    // public function update(Request $request, UpdateContactRequest $formRequest, $id)
+    public function update(UpdateContactRequest $request, int $id)
     {
-        // var_dump($request->all());
-        var_dump($formRequest->validated());
-        // var_dump($request->user);
-
+        $updatedContact = $this->updateContactService->updateContact($request, $id);
+        return new ContactResource($updatedContact);
     }
 
     /**
@@ -73,8 +80,9 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+        Contact::destroy($id);
+        return response()->json(['msg' => "Contact removed"]);
     }
 }
