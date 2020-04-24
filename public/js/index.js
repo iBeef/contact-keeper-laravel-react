@@ -52009,11 +52009,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _context_contact_contactContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/contact/contactContext */ "./resources/js/context/contact/contactContext.js");
+
 
 
 
 var ContactItem = function ContactItem(_ref) {
   var contact = _ref.contact;
+  var contactContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_contact_contactContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  var deleteContact = contactContext.deleteContact;
+
+  var onDelete = function onDelete() {
+    deleteContact(id);
+  };
+
   var id = contact.id,
       name = contact.name,
       email = contact.email,
@@ -52037,7 +52046,8 @@ var ContactItem = function ContactItem(_ref) {
   }), " ", phone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-dark btn-sm"
   }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-danger btn-sm"
+    className: "btn btn-danger btn-sm",
+    onClick: onDelete
   }, "Delete")));
 };
 
@@ -52243,7 +52253,14 @@ var ContactState = function ContactState(props) {
       payload: contact
     });
   }; // Delete contact
-  // set current contact
+
+
+  var deleteContact = function deleteContact(id) {
+    dispatch({
+      type: _types__WEBPACK_IMPORTED_MODULE_3__["DELETE_CONTACT"],
+      payload: id
+    });
+  }; // set current contact
   // Clear current contact
   // Update contact
   // Filter contacts
@@ -52253,7 +52270,8 @@ var ContactState = function ContactState(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_contactContext__WEBPACK_IMPORTED_MODULE_1__["default"].Provider, {
     value: {
       contacts: state.contacts,
-      addContact: addContact
+      addContact: addContact,
+      deleteContact: deleteContact
     }
   }, props.children);
 };
@@ -52313,6 +52331,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     case _types__WEBPACK_IMPORTED_MODULE_0__["ADD_CONTACT"]:
       return _objectSpread({}, state, {
         contacts: [].concat(_toConsumableArray(state.contacts), [action.payload])
+      });
+
+    case _types__WEBPACK_IMPORTED_MODULE_0__["DELETE_CONTACT"]:
+      return _objectSpread({}, state, {
+        contacts: state.contacts.filter(function (contact) {
+          return contact.id !== action.payload;
+        })
       });
   }
 });
