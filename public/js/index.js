@@ -52017,10 +52017,13 @@ __webpack_require__.r(__webpack_exports__);
 var ContactItem = function ContactItem(_ref) {
   var contact = _ref.contact;
   var contactContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_contact_contactContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  var deleteContact = contactContext.deleteContact;
+  var deleteContact = contactContext.deleteContact,
+      setCurrent = contactContext.setCurrent,
+      clearCurrent = contactContext.clearCurrent;
 
   var onDelete = function onDelete() {
     deleteContact(id);
+    clearCurrent();
   };
 
   var id = contact.id,
@@ -52044,7 +52047,10 @@ var ContactItem = function ContactItem(_ref) {
   }), " ", email), phone && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-phone"
   }), " ", phone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-dark btn-sm"
+    className: "btn btn-dark btn-sm",
+    onClick: function onClick() {
+      return setCurrent(contact);
+    }
   }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-danger btn-sm",
     onClick: onDelete
@@ -52237,7 +52243,8 @@ var ContactState = function ContactState(props) {
       email: 'harry@gmail.com',
       phone: '333-333-3333',
       type: 'professional'
-    }]
+    }],
+    current: null
   };
 
   var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_0__["useReducer"])(_contactReducer__WEBPACK_IMPORTED_MODULE_2__["default"], initialState),
@@ -52260,9 +52267,22 @@ var ContactState = function ContactState(props) {
       type: _types__WEBPACK_IMPORTED_MODULE_3__["DELETE_CONTACT"],
       payload: id
     });
-  }; // set current contact
-  // Clear current contact
-  // Update contact
+  }; // Set current contact
+
+
+  var setCurrent = function setCurrent(contact) {
+    dispatch({
+      type: _types__WEBPACK_IMPORTED_MODULE_3__["SET_CURRENT"],
+      payload: contact
+    });
+  }; // Clear current contact
+
+
+  var clearCurrent = function clearCurrent() {
+    dispatch({
+      type: _types__WEBPACK_IMPORTED_MODULE_3__["CLEAR_CURRENT"]
+    });
+  }; // Update contact
   // Filter contacts
   // Clear filter
 
@@ -52270,8 +52290,11 @@ var ContactState = function ContactState(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_contactContext__WEBPACK_IMPORTED_MODULE_1__["default"].Provider, {
     value: {
       contacts: state.contacts,
+      current: state.current,
       addContact: addContact,
-      deleteContact: deleteContact
+      deleteContact: deleteContact,
+      setCurrent: setCurrent,
+      clearCurrent: clearCurrent
     }
   }, props.children);
 };
@@ -52339,6 +52362,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           return contact.id !== action.payload;
         })
       });
+
+    case _types__WEBPACK_IMPORTED_MODULE_0__["SET_CURRENT"]:
+      return _objectSpread({}, state, {
+        current: action.payload
+      });
+
+    case _types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_CURRENT"]:
+      return _objectSpread({}, state, {
+        current: null
+      });
   }
 });
 
@@ -52405,7 +52438,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /srv/http/contact-keeper-laravel-react/resources/js/index.js */"./resources/js/index.js");
+module.exports = __webpack_require__(/*! /Users/ibeef/Programming/Web_Dev/PHP_Sites/contact-keeper-laravel-react/resources/js/index.js */"./resources/js/index.js");
 
 
 /***/ })
