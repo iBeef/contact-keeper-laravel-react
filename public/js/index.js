@@ -51921,6 +51921,22 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var ContactForm = function ContactForm() {
   var contactContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_contact_contactContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var addContact = contactContext.addContact,
+      updateContact = contactContext.updateContact,
+      clearCurrent = contactContext.clearCurrent,
+      current = contactContext.current;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (current !== null) {
+      setContact(current);
+    } else {
+      setContact({
+        name: '',
+        email: '',
+        phone: '',
+        type: 'personal'
+      });
+    }
+  }, [contactContext, current]);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     name: '',
@@ -51938,13 +51954,18 @@ var ContactForm = function ContactForm() {
 
   var onSubmit = function onSubmit(e) {
     e.preventDefault();
-    contactContext.addContact(contact);
-    setContact({
-      name: '',
-      email: '',
-      phone: '',
-      type: 'personal'
-    });
+
+    if (current === null) {
+      addContact(contact);
+    } else {
+      updateContact(contact);
+    }
+
+    clearAll();
+  };
+
+  var clearAll = function clearAll() {
+    clearCurrent();
   };
 
   var name = contact.name,
@@ -51955,7 +51976,7 @@ var ContactForm = function ContactForm() {
     onSubmit: onSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "text-primary"
-  }, "Add Contact"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  }, current ? 'Edit Contact' : 'Add Contact'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
     placeholder: "Name",
     name: "name",
@@ -51987,9 +52008,12 @@ var ContactForm = function ContactForm() {
     onChange: onChange
   }), ' ', "Professional", ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "submit",
-    value: "Add Contact",
+    value: current ? 'Update Contact' : 'Add Contact',
     className: "btn btn-primary btn-block"
-  })));
+  })), current && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-light btn-block",
+    onClick: clearAll
+  }, "Clear")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ContactForm);
@@ -52283,7 +52307,14 @@ var ContactState = function ContactState(props) {
       type: _types__WEBPACK_IMPORTED_MODULE_3__["CLEAR_CURRENT"]
     });
   }; // Update contact
-  // Filter contacts
+
+
+  var updateContact = function updateContact(contact) {
+    dispatch({
+      type: _types__WEBPACK_IMPORTED_MODULE_3__["UPDATE_CONTACT"],
+      payload: contact
+    });
+  }; // Filter contacts
   // Clear filter
 
 
@@ -52292,6 +52323,7 @@ var ContactState = function ContactState(props) {
       contacts: state.contacts,
       current: state.current,
       addContact: addContact,
+      updateContact: updateContact,
       deleteContact: deleteContact,
       setCurrent: setCurrent,
       clearCurrent: clearCurrent
@@ -52354,6 +52386,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     case _types__WEBPACK_IMPORTED_MODULE_0__["ADD_CONTACT"]:
       return _objectSpread({}, state, {
         contacts: [].concat(_toConsumableArray(state.contacts), [action.payload])
+      });
+
+    case _types__WEBPACK_IMPORTED_MODULE_0__["UPDATE_CONTACT"]:
+      return _objectSpread({}, state, {
+        contacts: state.contacts.map(function (contact) {
+          return contact.id === action.payload.id ? action.payload : contact;
+        })
       });
 
     case _types__WEBPACK_IMPORTED_MODULE_0__["DELETE_CONTACT"]:
@@ -52438,7 +52477,7 @@ react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/ibeef/Programming/Web_Dev/PHP_Sites/contact-keeper-laravel-react/resources/js/index.js */"./resources/js/index.js");
+module.exports = __webpack_require__(/*! /srv/http/contact-keeper-laravel-react/resources/js/index.js */"./resources/js/index.js");
 
 
 /***/ })
