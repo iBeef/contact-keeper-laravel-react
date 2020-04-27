@@ -51886,6 +51886,55 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/contacts/ContactFilter.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/contacts/ContactFilter.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_contact_contactContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/contact/contactContext */ "./resources/js/context/contact/contactContext.js");
+/* harmony import */ var _context_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/types */ "./resources/js/context/types.js");
+
+
+
+
+var ContactFilter = function ContactFilter() {
+  var contactContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_contact_contactContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  var text = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])('');
+  var filterContacts = contactContext.filterContacts,
+      clearFilter = contactContext.clearFilter,
+      filtered = contactContext.filtered;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (filtered === null) {
+      text.current.value = '';
+    }
+  });
+
+  var onChange = function onChange(e) {
+    if (text.current.value !== '') {
+      filterContacts(e.target.value);
+    } else {
+      clearFilter();
+    }
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    ref: text,
+    type: "text",
+    placeholder: "Filter Contacts...",
+    onChange: onChange
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ContactFilter);
+
+/***/ }),
+
 /***/ "./resources/js/components/contacts/ContactForm.js":
 /*!*********************************************************!*\
   !*** ./resources/js/components/contacts/ContactForm.js ***!
@@ -52107,8 +52156,19 @@ __webpack_require__.r(__webpack_exports__);
 
 var Contacts = function Contacts() {
   var contactContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_contact_contactContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  var contacts = contactContext.contacts;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, contacts.map(function (contact) {
+  var contacts = contactContext.contacts,
+      filtered = contactContext.filtered;
+
+  if (contacts.length === 0) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Please add a contact");
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, filtered !== null ? filtered.map(function (contact) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ContactItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: contact.id,
+      contact: contact
+    });
+  }) : contacts.map(function (contact) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ContactItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: contact.id,
       contact: contact
@@ -52202,6 +52262,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _contacts_Contacts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../contacts/Contacts */ "./resources/js/components/contacts/Contacts.js");
 /* harmony import */ var _contacts_ContactForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../contacts/ContactForm */ "./resources/js/components/contacts/ContactForm.js");
+/* harmony import */ var _contacts_ContactFilter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../contacts/ContactFilter */ "./resources/js/components/contacts/ContactFilter.js");
+
 
 
 
@@ -52209,7 +52271,7 @@ __webpack_require__.r(__webpack_exports__);
 var Home = function Home() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "grid-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_contacts_ContactForm__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_contacts_Contacts__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_contacts_ContactForm__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_contacts_ContactFilter__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_contacts_Contacts__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -52268,7 +52330,8 @@ var ContactState = function ContactState(props) {
       phone: '333-333-3333',
       type: 'professional'
     }],
-    current: null
+    current: null,
+    filtered: null
   };
 
   var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_0__["useReducer"])(_contactReducer__WEBPACK_IMPORTED_MODULE_2__["default"], initialState),
@@ -52315,18 +52378,34 @@ var ContactState = function ContactState(props) {
       payload: contact
     });
   }; // Filter contacts
-  // Clear filter
 
+
+  var filterContacts = function filterContacts(text) {
+    dispatch({
+      type: _types__WEBPACK_IMPORTED_MODULE_3__["FILTER_CONTACTS"],
+      payload: text
+    });
+  }; // Clear filter
+
+
+  var clearFilter = function clearFilter() {
+    dispatch({
+      type: _types__WEBPACK_IMPORTED_MODULE_3__["CLEAR_FILTER"]
+    });
+  };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_contactContext__WEBPACK_IMPORTED_MODULE_1__["default"].Provider, {
     value: {
       contacts: state.contacts,
       current: state.current,
+      filtered: state.filtered,
       addContact: addContact,
       updateContact: updateContact,
       deleteContact: deleteContact,
       setCurrent: setCurrent,
-      clearCurrent: clearCurrent
+      clearCurrent: clearCurrent,
+      filterContacts: filterContacts,
+      clearFilter: clearFilter
     }
   }, props.children);
 };
@@ -52411,6 +52490,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return _objectSpread({}, state, {
         current: null
       });
+
+    case _types__WEBPACK_IMPORTED_MODULE_0__["FILTER_CONTACTS"]:
+      return _objectSpread({}, state, {
+        filtered: state.contacts.filter(function (contact) {
+          var regex = new RegExp("".concat(action.payload), 'gi');
+          return contact.name.match(regex) || contact.email.match(regex);
+        })
+      });
+
+    case _types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_FILTER"]:
+      return _objectSpread({}, state, {
+        filtered: null
+      });
+
+    default:
+      return state;
   }
 });
 
