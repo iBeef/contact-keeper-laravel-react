@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\ValidationTrait;
 use App\User;
 use App\Http\Requests\RegisterUserRequest;
-use Tymon\JWTAuth\JWTAuth;
+use JWTAuth;
 
 class UserController extends Controller
 {

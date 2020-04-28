@@ -24,14 +24,36 @@ const AuthState = props => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   // Load User
+  const loadUser = () => console.log('Load user');
 
   // Register User
-
+  const register = async formData => {
+    const config = { headers: { 'Content-Type': 'application/json' } };
+    try {
+      const res = await axios.post(
+        'http://current-dev.test/api/v1/users',
+        formData,
+        config
+      );
+      dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+    } catch (err) {
+      let error;
+      if (err.response.data.msg) {
+        error = err.response.data.msg;
+      } else {
+        error =
+          err.response.data.errors[Object.keys(err.response.data.errors)[0]][0];
+      }
+      dispatch({ type: REGISTER_FAIL, payload: error });
+    }
+  };
   // Login User
-
+  const login = () => console.log('Login');
   // Logout User
+  const logout = () => console.log('Logout');
 
   // Clear Errors
+  const clearErrors = () => console.log('Clear Errors');
 
   return (
     <AuthContext.Provider
@@ -40,7 +62,12 @@ const AuthState = props => {
         isAuthenticated: state.isAuthenticated,
         loading: state.loading,
         user: state.user,
-        user: state.user
+        error: state.error,
+        register,
+        loadUser,
+        login,
+        logout,
+        clearErrors
       }}
     >
       {props.children}
