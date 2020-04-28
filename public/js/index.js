@@ -55216,6 +55216,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _context_contact_ContactState__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./context/contact/ContactState */ "./resources/js/context/contact/ContactState.js");
 /* harmony import */ var _context_auth_AuthState__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./context/auth/AuthState */ "./resources/js/context/auth/AuthState.js");
 /* harmony import */ var _context_alert_AlertState__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./context/alert/AlertState */ "./resources/js/context/alert/AlertState.js");
+/* harmony import */ var _utils_setAuthToken__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/setAuthToken */ "./resources/js/utils/setAuthToken.js");
 
 
 
@@ -55227,6 +55228,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+if (localStorage.token) {
+  Object(_utils_setAuthToken__WEBPACK_IMPORTED_MODULE_11__["default"])(localStorage.token);
+}
 
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_auth_AuthState__WEBPACK_IMPORTED_MODULE_9__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_contact_ContactState__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_alert_AlertState__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -55411,8 +55417,16 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Register = function Register() {
   var alertContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_alert_alertContext__WEBPACK_IMPORTED_MODULE_1__["default"]);
   var authContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_auth_authContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  var register = authContext.register;
+  var register = authContext.register,
+      error = authContext.error,
+      clearErrors = authContext.clearErrors;
   var setAlert = alertContext.setAlert;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    if (error == 'User already exists') {
+      setAlert(error, 'danger');
+      clearErrors();
+    }
+  }, [error]);
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     name: '',
@@ -55434,19 +55448,19 @@ var Register = function Register() {
   };
 
   var onSubmit = function onSubmit(e) {
-    e.preventDefault(); // if (name === '' || email === '' || password === '') {
-    //   setAlert('Please enter all fields', 'danger');
-    // } else if (password !== password2) {
-    //   setAlert('Passwords do not match', 'danger');
-    // } else {
-    //   register({ name, email, password2 });
-    // }
+    e.preventDefault();
 
-    register({
-      name: name,
-      email: email,
-      password: password
-    });
+    if (name === '' || email === '' || password === '') {
+      setAlert('Please enter all fields', 'danger');
+    } else if (password !== password2) {
+      setAlert('Passwords do not match', 'danger');
+    } else {
+      register({
+        name: name,
+        email: email,
+        password: password
+      });
+    }
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -55463,8 +55477,8 @@ var Register = function Register() {
     type: "text",
     name: "name",
     value: name,
-    onChange: onChange // required
-
+    onChange: onChange,
+    required: true
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -55473,8 +55487,8 @@ var Register = function Register() {
     type: "email",
     name: "email",
     value: email,
-    onChange: onChange // required
-
+    onChange: onChange,
+    required: true
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -55483,9 +55497,9 @@ var Register = function Register() {
     type: "password",
     name: "password",
     value: password,
-    onChange: onChange // required
-    // minLength="6"
-
+    onChange: onChange,
+    required: true,
+    minLength: "6"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-group"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -55494,9 +55508,9 @@ var Register = function Register() {
     type: "password",
     name: "password2",
     value: password2,
-    onChange: onChange // required
-    // minLength="6"
-
+    onChange: onChange,
+    required: true,
+    minLength: "6"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "submit",
     value: "Register",
@@ -56090,7 +56104,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _authContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./authContext */ "./resources/js/context/auth/authContext.js");
 /* harmony import */ var _authReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./authReducer */ "./resources/js/context/auth/authReducer.js");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../types */ "./resources/js/context/types.js");
+/* harmony import */ var _utils_setAuthToken__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/setAuthToken */ "./resources/js/utils/setAuthToken.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../types */ "./resources/js/context/types.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -56114,6 +56129,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var AuthState = function AuthState(props) {
   var initialState = {
     token: localStorage.getItem('token'),
@@ -56129,52 +56145,38 @@ var AuthState = function AuthState(props) {
       dispatch = _useReducer2[1]; // Load User
 
 
-  var loadUser = function loadUser() {
-    return console.log('Load user');
-  }; // Register User
-
-
-  var register = /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(formData) {
-      var config, res, error;
+  var loadUser = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              config = {
-                headers: {
-                  'Content-Type': 'application/json'
-                }
-              };
+              if (localStorage.token) {
+                Object(_utils_setAuthToken__WEBPACK_IMPORTED_MODULE_4__["default"])(localStorage.token);
+              }
+
               _context.prev = 1;
               _context.next = 4;
-              return axios.post('http://current-dev.test/api/v1/users', formData, config);
+              return axios.get('http://current-dev.test/api/v1/auth');
 
             case 4:
               res = _context.sent;
               dispatch({
-                type: _types__WEBPACK_IMPORTED_MODULE_4__["REGISTER_SUCCESS"],
+                type: _types__WEBPACK_IMPORTED_MODULE_5__["USER_LOADED"],
                 payload: res.data
               });
-              _context.next = 12;
+              _context.next = 11;
               break;
 
             case 8:
               _context.prev = 8;
               _context.t0 = _context["catch"](1);
-
-              if (_context.t0.response.data.msg) {
-                error = _context.t0.response.data.msg;
-              } else {
-                error = _context.t0.response.data.errors[Object.keys(_context.t0.response.data.errors)[0]][0];
-              }
-
               dispatch({
-                type: _types__WEBPACK_IMPORTED_MODULE_4__["REGISTER_FAIL"],
-                payload: error
+                type: _types__WEBPACK_IMPORTED_MODULE_5__["AUTH_ERROR"]
               });
 
-            case 12:
+            case 11:
             case "end":
               return _context.stop();
           }
@@ -56182,8 +56184,63 @@ var AuthState = function AuthState(props) {
       }, _callee, null, [[1, 8]]);
     }));
 
-    return function register(_x) {
+    return function loadUser() {
       return _ref.apply(this, arguments);
+    };
+  }(); // Register User
+
+
+  var register = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(formData) {
+      var config, res, error;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              config = {
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              };
+              _context2.prev = 1;
+              _context2.next = 4;
+              return axios.post('http://current-dev.test/api/v1/users', formData, config);
+
+            case 4:
+              res = _context2.sent;
+              dispatch({
+                type: _types__WEBPACK_IMPORTED_MODULE_5__["REGISTER_SUCCESS"],
+                payload: res.data
+              });
+              loadUser();
+              _context2.next = 13;
+              break;
+
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](1);
+
+              if (_context2.t0.response.data.msg) {
+                error = _context2.t0.response.data.msg;
+              } else {
+                error = _context2.t0.response.data.errors[Object.keys(_context2.t0.response.data.errors)[0]][0];
+              }
+
+              dispatch({
+                type: _types__WEBPACK_IMPORTED_MODULE_5__["REGISTER_FAIL"],
+                payload: error
+              });
+
+            case 13:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[1, 9]]);
+    }));
+
+    return function register(_x) {
+      return _ref2.apply(this, arguments);
     };
   }(); // Login User
 
@@ -56199,7 +56256,9 @@ var AuthState = function AuthState(props) {
 
 
   var clearErrors = function clearErrors() {
-    return console.log('Clear Errors');
+    return dispatch({
+      type: _types__WEBPACK_IMPORTED_MODULE_5__["CLEAR_ERRORS"]
+    });
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_authContext__WEBPACK_IMPORTED_MODULE_2__["default"].Provider, {
@@ -56258,6 +56317,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = (function (state, action) {
   switch (action.type) {
+    case _types__WEBPACK_IMPORTED_MODULE_0__["USER_LOADED"]:
+      return _objectSpread({}, state, {
+        isAuthenticated: true,
+        loading: false,
+        user: action.payload
+      });
+
     case _types__WEBPACK_IMPORTED_MODULE_0__["REGISTER_SUCCESS"]:
       localStorage.setItem('token', action.payload.token);
       return _objectSpread({}, state, {}, action.payload, {
@@ -56266,6 +56332,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
 
     case _types__WEBPACK_IMPORTED_MODULE_0__["REGISTER_FAIL"]:
+    case _types__WEBPACK_IMPORTED_MODULE_0__["AUTH_ERROR"]:
       localStorage.removeItem('token');
       return _objectSpread({}, state, {
         token: null,
@@ -56273,6 +56340,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         loading: false,
         user: null,
         error: action.payload
+      });
+
+    case _types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
+      return _objectSpread({}, state, {
+        error: null
       });
 
     default:
@@ -56585,6 +56657,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_App__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById("root"));
+
+/***/ }),
+
+/***/ "./resources/js/utils/setAuthToken.js":
+/*!********************************************!*\
+  !*** ./resources/js/utils/setAuthToken.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var setAuthToken = function setAuthToken(token) {
+  if (token) {
+    axios.defaults.headers.common['Authorization'] = "Bearer ".concat(token);
+  } else {
+    delete axios.defaults.headers.common['Authorization'];
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (setAuthToken);
 
 /***/ }),
 
