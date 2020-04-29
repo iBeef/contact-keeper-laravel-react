@@ -55213,10 +55213,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pages_About__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/pages/About */ "./resources/js/components/pages/About.js");
 /* harmony import */ var _components_auth_Register__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/auth/Register */ "./resources/js/components/auth/Register.js");
 /* harmony import */ var _components_auth_Login__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/auth/Login */ "./resources/js/components/auth/Login.js");
-/* harmony import */ var _context_contact_ContactState__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./context/contact/ContactState */ "./resources/js/context/contact/ContactState.js");
-/* harmony import */ var _context_auth_AuthState__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./context/auth/AuthState */ "./resources/js/context/auth/AuthState.js");
-/* harmony import */ var _context_alert_AlertState__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./context/alert/AlertState */ "./resources/js/context/alert/AlertState.js");
-/* harmony import */ var _utils_setAuthToken__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./utils/setAuthToken */ "./resources/js/utils/setAuthToken.js");
+/* harmony import */ var _components_routing_PrivateRoute__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/routing/PrivateRoute */ "./resources/js/components/routing/PrivateRoute.js");
+/* harmony import */ var _context_contact_ContactState__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./context/contact/ContactState */ "./resources/js/context/contact/ContactState.js");
+/* harmony import */ var _context_auth_AuthState__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./context/auth/AuthState */ "./resources/js/context/auth/AuthState.js");
+/* harmony import */ var _context_alert_AlertState__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./context/alert/AlertState */ "./resources/js/context/alert/AlertState.js");
+/* harmony import */ var _utils_setAuthToken__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./utils/setAuthToken */ "./resources/js/utils/setAuthToken.js");
+
 
 
 
@@ -55231,13 +55233,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 if (localStorage.token) {
-  Object(_utils_setAuthToken__WEBPACK_IMPORTED_MODULE_11__["default"])(localStorage.token);
+  Object(_utils_setAuthToken__WEBPACK_IMPORTED_MODULE_12__["default"])(localStorage.token);
 }
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_auth_AuthState__WEBPACK_IMPORTED_MODULE_9__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_contact_ContactState__WEBPACK_IMPORTED_MODULE_8__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_alert_AlertState__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_auth_AuthState__WEBPACK_IMPORTED_MODULE_10__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_contact_ContactState__WEBPACK_IMPORTED_MODULE_9__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_alert_AlertState__WEBPACK_IMPORTED_MODULE_11__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Alerts__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_layout_Alerts__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_routing_PrivateRoute__WEBPACK_IMPORTED_MODULE_8__["default"], {
     exact: true,
     path: "/",
     component: _components_pages_Home__WEBPACK_IMPORTED_MODULE_4__["default"]
@@ -55826,22 +55828,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/index.js");
 /* harmony import */ var _ContactItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ContactItem */ "./resources/js/components/contacts/ContactItem.js");
-/* harmony import */ var _context_contact_contactContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../context/contact/contactContext */ "./resources/js/context/contact/contactContext.js");
+/* harmony import */ var _layout_Spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../layout/Spinner */ "./resources/js/components/layout/Spinner.js");
+/* harmony import */ var _context_contact_contactContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../context/contact/contactContext */ "./resources/js/context/contact/contactContext.js");
+
 
 
 
 
 
 var Contacts = function Contacts() {
-  var contactContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_contact_contactContext__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  var contactContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_contact_contactContext__WEBPACK_IMPORTED_MODULE_4__["default"]);
   var contacts = contactContext.contacts,
-      filtered = contactContext.filtered;
+      filtered = contactContext.filtered,
+      getContacts = contactContext.getContacts,
+      loading = contactContext.loading;
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    getContacts();
+  }, []);
 
-  if (contacts.length === 0) {
+  if (contacts && contacts.length === 0) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Please add a contact");
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_1__["TransitionGroup"], null, filtered !== null ? filtered.map(function (contact) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, contacts !== null && !loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_1__["TransitionGroup"], null, filtered !== null ? filtered.map(function (contact) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_transition_group__WEBPACK_IMPORTED_MODULE_1__["CSSTransition"], {
       key: contact.id,
       timeout: 500,
@@ -55857,7 +55866,7 @@ var Contacts = function Contacts() {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ContactItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
       contact: contact
     }));
-  })));
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_layout_Spinner__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Contacts);
@@ -55910,6 +55919,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _context_auth_authContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../context/auth/authContext */ "./resources/js/context/auth/authContext.js");
+/* harmony import */ var _context_contact_contactContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../context/contact/contactContext */ "./resources/js/context/contact/contactContext.js");
+
+
 
 
 
@@ -55917,19 +55930,36 @@ __webpack_require__.r(__webpack_exports__);
 var Navbar = function Navbar(_ref) {
   var title = _ref.title,
       icon = _ref.icon;
+  var authContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_auth_authContext__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  var contactContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_contact_contactContext__WEBPACK_IMPORTED_MODULE_4__["default"]);
+  var isAuthenticated = authContext.isAuthenticated,
+      logout = authContext.logout,
+      user = authContext.user;
+  var clearContacts = contactContext.clearContacts;
+
+  var onLogout = function onLogout() {
+    logout();
+    clearContacts();
+  };
+
+  var authLinks = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Hello ", user && user.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#!",
+    onClick: onLogout
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "fas fa-sign-out-alt"
+  }), ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "hide-sm"
+  }, "Logout"))));
+  var guestLinks = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/register"
+  }, "Register")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/login"
+  }, "Login")));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navbar bg-primary"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: icon
-  }), " ", title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/"
-  }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/about"
-  }, "About")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/register"
-  }, "Register")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/login"
-  }, "Login"))));
+  }), " ", title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, isAuthenticated ? authLinks : guestLinks));
 };
 
 Navbar.propTypes = {
@@ -55941,6 +55971,49 @@ Navbar.defaultProps = {
   icon: 'fas fa-id-card-alt'
 };
 /* harmony default export */ __webpack_exports__["default"] = (Navbar);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/Spinner.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/layout/Spinner.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _spinner_gif__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spinner.gif */ "./resources/js/components/layout/spinner.gif");
+/* harmony import */ var _spinner_gif__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_spinner_gif__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var Spinner = function Spinner() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _spinner_gif__WEBPACK_IMPORTED_MODULE_1___default.a,
+    alt: "Loading...",
+    style: {
+      display: 'block',
+      width: '200px',
+      margin: 'auto'
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Spinner);
+
+/***/ }),
+
+/***/ "./resources/js/components/layout/spinner.gif":
+/*!****************************************************!*\
+  !*** ./resources/js/components/layout/spinner.gif ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/spinner.gif?8a7630caadfb15dbd13cb469853ab004";
 
 /***/ }),
 
@@ -56002,6 +56075,49 @@ var Home = function Home() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
+
+/***/ }),
+
+/***/ "./resources/js/components/routing/PrivateRoute.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/routing/PrivateRoute.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _context_auth_authContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/auth/authContext */ "./resources/js/context/auth/authContext.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+
+
+var PrivateRoute = function PrivateRoute(_ref) {
+  var Component = _ref.component,
+      rest = _objectWithoutProperties(_ref, ["component"]);
+
+  var authContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_auth_authContext__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  var isAuthenticated = authContext.isAuthenticated,
+      loading = authContext.loading;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], _extends({}, rest, {
+    render: function render(props) {
+      return !isAuthenticated && !loading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
+        to: "/login"
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, props);
+    }
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PrivateRoute);
 
 /***/ }),
 
@@ -56348,7 +56464,9 @@ var AuthState = function AuthState(props) {
 
 
   var logout = function logout() {
-    return console.log('Logout');
+    return dispatch({
+      type: _types__WEBPACK_IMPORTED_MODULE_5__["LOGOUT"]
+    });
   }; // Clear Errors
 
 
@@ -56432,6 +56550,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     case _types__WEBPACK_IMPORTED_MODULE_0__["REGISTER_FAIL"]:
     case _types__WEBPACK_IMPORTED_MODULE_0__["AUTH_ERROR"]:
     case _types__WEBPACK_IMPORTED_MODULE_0__["LOGIN_FAIL"]:
+    case _types__WEBPACK_IMPORTED_MODULE_0__["LOGOUT"]:
       localStorage.removeItem('token');
       return _objectSpread({}, state, {
         token: null,
@@ -56462,11 +56581,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _contactContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contactContext */ "./resources/js/context/contact/contactContext.js");
-/* harmony import */ var _contactReducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./contactReducer */ "./resources/js/context/contact/contactReducer.js");
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../types */ "./resources/js/context/types.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _contactContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./contactContext */ "./resources/js/context/contact/contactContext.js");
+/* harmony import */ var _contactReducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./contactReducer */ "./resources/js/context/contact/contactReducer.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../types */ "./resources/js/context/types.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -56486,55 +56613,234 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var ContactState = function ContactState(props) {
   var initialState = {
-    contacts: [{
-      id: 1,
-      name: 'Jil Johnson',
-      email: 'jill@gmail.com',
-      phone: '111-111-1111',
-      type: 'personal'
-    }, {
-      id: 2,
-      name: 'Sarah Watson',
-      email: 'sarah@gmail.com',
-      phone: '222-222-2222',
-      type: 'personal'
-    }, {
-      id: 3,
-      name: 'Harry White',
-      email: 'harry@gmail.com',
-      phone: '333-333-3333',
-      type: 'professional'
-    }],
+    contacts: null,
     current: null,
-    filtered: null
+    filtered: null,
+    error: null
   };
 
-  var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_0__["useReducer"])(_contactReducer__WEBPACK_IMPORTED_MODULE_2__["default"], initialState),
+  var _useReducer = Object(react__WEBPACK_IMPORTED_MODULE_1__["useReducer"])(_contactReducer__WEBPACK_IMPORTED_MODULE_3__["default"], initialState),
       _useReducer2 = _slicedToArray(_useReducer, 2),
       state = _useReducer2[0],
-      dispatch = _useReducer2[1]; // Add contact
+      dispatch = _useReducer2[1]; // Get contacts
 
 
-  var addContact = function addContact(contact) {
-    contact.id = 5;
+  var getContacts = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var res, error;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios.get('http://current-dev.test/api/v1/contacts');
+
+            case 3:
+              res = _context.sent;
+              dispatch({
+                type: _types__WEBPACK_IMPORTED_MODULE_4__["GET_CONTACTS"],
+                payload: res.data.data
+              });
+              _context.next = 11;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+
+              if (_context.t0.response.data.msg) {
+                error = _context.t0.response.data.msg;
+              } else {
+                error = _context.t0.response.data.errors[Object.keys(_context.t0.response.data.errors)[0]][0];
+              }
+
+              dispatch({
+                type: _types__WEBPACK_IMPORTED_MODULE_4__["CONTACT_ERROR"],
+                payload: error
+              });
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 7]]);
+    }));
+
+    return function getContacts() {
+      return _ref.apply(this, arguments);
+    };
+  }(); // Add contact
+
+
+  var addContact = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(contact) {
+      var config, res, error;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              config = {
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              };
+              _context2.prev = 1;
+              _context2.next = 4;
+              return axios.post('http://current-dev.test/api/v1/contacts', contact, config);
+
+            case 4:
+              res = _context2.sent;
+              dispatch({
+                type: _types__WEBPACK_IMPORTED_MODULE_4__["ADD_CONTACT"],
+                payload: res.data.data
+              });
+              _context2.next = 12;
+              break;
+
+            case 8:
+              _context2.prev = 8;
+              _context2.t0 = _context2["catch"](1);
+
+              if (_context2.t0.response.data.msg) {
+                error = _context2.t0.response.data.msg;
+              } else {
+                error = _context2.t0.response.data.errors[Object.keys(_context2.t0.response.data.errors)[0]][0];
+              }
+
+              dispatch({
+                type: _types__WEBPACK_IMPORTED_MODULE_4__["CONTACT_ERROR"],
+                payload: error
+              });
+
+            case 12:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[1, 8]]);
+    }));
+
+    return function addContact(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }(); // Update contact
+
+
+  var updateContact = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(contact) {
+      var config, res, error;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              config = {
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              };
+              _context3.prev = 1;
+              _context3.next = 4;
+              return axios.put("http://current-dev.test/api/v1/contacts/".concat(contact.id), contact, config);
+
+            case 4:
+              res = _context3.sent;
+              dispatch({
+                type: _types__WEBPACK_IMPORTED_MODULE_4__["UPDATE_CONTACT"],
+                payload: res.data.data
+              });
+              _context3.next = 12;
+              break;
+
+            case 8:
+              _context3.prev = 8;
+              _context3.t0 = _context3["catch"](1);
+
+              if (_context3.t0.response.data.msg) {
+                error = _context3.t0.response.data.msg;
+              } else {
+                error = _context3.t0.response.data.errors[Object.keys(_context3.t0.response.data.errors)[0]][0];
+              }
+
+              dispatch({
+                type: _types__WEBPACK_IMPORTED_MODULE_4__["CONTACT_ERROR"],
+                payload: error
+              });
+
+            case 12:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[1, 8]]);
+    }));
+
+    return function updateContact(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }(); // Delete contact
+
+
+  var deleteContact = /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(id) {
+      var res, error;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.prev = 0;
+              _context4.next = 3;
+              return axios["delete"]("http://current-dev.test/api/v1/contacts/".concat(id));
+
+            case 3:
+              res = _context4.sent;
+              dispatch({
+                type: _types__WEBPACK_IMPORTED_MODULE_4__["DELETE_CONTACT"],
+                payload: id
+              });
+              _context4.next = 11;
+              break;
+
+            case 7:
+              _context4.prev = 7;
+              _context4.t0 = _context4["catch"](0);
+
+              if (_context4.t0.response.data.msg) {
+                error = _context4.t0.response.data.msg;
+              } else {
+                error = _context4.t0.response.data.errors[Object.keys(_context4.t0.response.data.errors)[0]][0];
+              }
+
+              dispatch({
+                type: _types__WEBPACK_IMPORTED_MODULE_4__["CONTACT_ERROR"],
+                payload: error
+              });
+
+            case 11:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[0, 7]]);
+    }));
+
+    return function deleteContact(_x3) {
+      return _ref4.apply(this, arguments);
+    };
+  }(); // Clear contacts
+
+
+  var clearContacts = function clearContacts() {
     dispatch({
-      type: _types__WEBPACK_IMPORTED_MODULE_3__["ADD_CONTACT"],
-      payload: contact
-    });
-  }; // Delete contact
-
-
-  var deleteContact = function deleteContact(id) {
-    dispatch({
-      type: _types__WEBPACK_IMPORTED_MODULE_3__["DELETE_CONTACT"],
-      payload: id
+      type: _types__WEBPACK_IMPORTED_MODULE_4__["CLEAR_CONTACTS"]
     });
   }; // Set current contact
 
 
   var setCurrent = function setCurrent(contact) {
     dispatch({
-      type: _types__WEBPACK_IMPORTED_MODULE_3__["SET_CURRENT"],
+      type: _types__WEBPACK_IMPORTED_MODULE_4__["SET_CURRENT"],
       payload: contact
     });
   }; // Clear current contact
@@ -56542,22 +56848,14 @@ var ContactState = function ContactState(props) {
 
   var clearCurrent = function clearCurrent() {
     dispatch({
-      type: _types__WEBPACK_IMPORTED_MODULE_3__["CLEAR_CURRENT"]
-    });
-  }; // Update contact
-
-
-  var updateContact = function updateContact(contact) {
-    dispatch({
-      type: _types__WEBPACK_IMPORTED_MODULE_3__["UPDATE_CONTACT"],
-      payload: contact
+      type: _types__WEBPACK_IMPORTED_MODULE_4__["CLEAR_CURRENT"]
     });
   }; // Filter contacts
 
 
   var filterContacts = function filterContacts(text) {
     dispatch({
-      type: _types__WEBPACK_IMPORTED_MODULE_3__["FILTER_CONTACTS"],
+      type: _types__WEBPACK_IMPORTED_MODULE_4__["FILTER_CONTACTS"],
       payload: text
     });
   }; // Clear filter
@@ -56565,18 +56863,21 @@ var ContactState = function ContactState(props) {
 
   var clearFilter = function clearFilter() {
     dispatch({
-      type: _types__WEBPACK_IMPORTED_MODULE_3__["CLEAR_FILTER"]
+      type: _types__WEBPACK_IMPORTED_MODULE_4__["CLEAR_FILTER"]
     });
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_contactContext__WEBPACK_IMPORTED_MODULE_1__["default"].Provider, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_contactContext__WEBPACK_IMPORTED_MODULE_2__["default"].Provider, {
     value: {
       contacts: state.contacts,
       current: state.current,
       filtered: state.filtered,
+      error: state.error,
+      getContacts: getContacts,
       addContact: addContact,
       updateContact: updateContact,
       deleteContact: deleteContact,
+      clearContacts: clearContacts,
       setCurrent: setCurrent,
       clearCurrent: clearCurrent,
       filterContacts: filterContacts,
@@ -56637,23 +56938,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = (function (state, action) {
   switch (action.type) {
-    case _types__WEBPACK_IMPORTED_MODULE_0__["ADD_CONTACT"]:
+    case _types__WEBPACK_IMPORTED_MODULE_0__["GET_CONTACTS"]:
       return _objectSpread({}, state, {
-        contacts: [].concat(_toConsumableArray(state.contacts), [action.payload])
+        contacts: action.payload,
+        loading: false
+      });
+
+    case _types__WEBPACK_IMPORTED_MODULE_0__["ADD_CONTACT"]:
+      console.log(action.payload);
+      return _objectSpread({}, state, {
+        contacts: [action.payload].concat(_toConsumableArray(state.contacts)),
+        loading: false
       });
 
     case _types__WEBPACK_IMPORTED_MODULE_0__["UPDATE_CONTACT"]:
       return _objectSpread({}, state, {
         contacts: state.contacts.map(function (contact) {
           return contact.id === action.payload.id ? action.payload : contact;
-        })
+        }),
+        loading: false
       });
 
     case _types__WEBPACK_IMPORTED_MODULE_0__["DELETE_CONTACT"]:
       return _objectSpread({}, state, {
         contacts: state.contacts.filter(function (contact) {
           return contact.id !== action.payload;
-        })
+        }),
+        loading: false
+      });
+
+    case _types__WEBPACK_IMPORTED_MODULE_0__["CLEAR_CONTACTS"]:
+      return _objectSpread({}, state, {
+        contacts: null,
+        filtered: null,
+        current: null,
+        error: null
       });
 
     case _types__WEBPACK_IMPORTED_MODULE_0__["SET_CURRENT"]:
@@ -56679,6 +56998,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         filtered: null
       });
 
+    case _types__WEBPACK_IMPORTED_MODULE_0__["CONTACT_ERROR"]:
+      return _objectSpread({}, state, {
+        error: action.payload
+      });
+
     default:
       return state;
   }
@@ -56690,18 +57014,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /*!***************************************!*\
   !*** ./resources/js/context/types.js ***!
   \***************************************/
-/*! exports provided: ADD_CONTACT, DELETE_CONTACT, SET_CURRENT, CLEAR_CURRENT, UPDATE_CONTACT, FILTER_CONTACTS, CLEAR_FILTER, SET_ALERT, REMOVE_ALERT, REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, CLEAR_ERRORS */
+/*! exports provided: GET_CONTACTS, ADD_CONTACT, DELETE_CONTACT, SET_CURRENT, CLEAR_CURRENT, UPDATE_CONTACT, FILTER_CONTACTS, CLEAR_CONTACTS, CLEAR_FILTER, CONTACT_ERROR, SET_ALERT, REMOVE_ALERT, REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, CLEAR_ERRORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_CONTACTS", function() { return GET_CONTACTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_CONTACT", function() { return ADD_CONTACT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_CONTACT", function() { return DELETE_CONTACT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_CURRENT", function() { return SET_CURRENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_CURRENT", function() { return CLEAR_CURRENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_CONTACT", function() { return UPDATE_CONTACT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FILTER_CONTACTS", function() { return FILTER_CONTACTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_CONTACTS", function() { return CLEAR_CONTACTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_FILTER", function() { return CLEAR_FILTER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CONTACT_ERROR", function() { return CONTACT_ERROR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_ALERT", function() { return SET_ALERT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ALERT", function() { return REMOVE_ALERT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REGISTER_SUCCESS", function() { return REGISTER_SUCCESS; });
@@ -56713,13 +57040,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT", function() { return LOGOUT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
 // Contacts
+var GET_CONTACTS = 'GET_CONTACTS';
 var ADD_CONTACT = 'ADD_CONTACT';
 var DELETE_CONTACT = 'DELETE_CONTACT';
 var SET_CURRENT = 'SET_CURRENT';
 var CLEAR_CURRENT = 'CLEAR_CURRENT';
 var UPDATE_CONTACT = 'UPDATE_CONTACT';
 var FILTER_CONTACTS = 'FILTER_CONTACTS';
-var CLEAR_FILTER = 'CLEAR_FILTER'; // Alerts
+var CLEAR_CONTACTS = 'CLEAR_CONTACTS';
+var CLEAR_FILTER = 'CLEAR_FILTER';
+var CONTACT_ERROR = 'CONTACT_ERROR'; // Alerts
 
 var SET_ALERT = 'SET_ALERT';
 var REMOVE_ALERT = 'REMOVE_ALERT'; // Auth
